@@ -6,11 +6,12 @@ const EditUser = () => {
   const { _id } = useParams(); 
   const [formData, setFormData] = useState({
     photo: null,
-    name: '',
-    surname: '',
+    fullName: '',
     email: '',
-    username: '',
+    userName: '',
     password: '',
+    isAdmin: '',
+    isSubscribed: ''
   });
 
   const getUserById = async (id) => {
@@ -26,7 +27,7 @@ const EditUser = () => {
   const uploadPhotoToCloudinary = async (file) => {
     const formData = new FormData();
     formData.append('file', file);
-    formData.append('upload_preset', 'ujdnc7cj'); 
+    formData.append('upload_preset', 'da1lrlby1'); 
 
     const response = await fetch('https://api.cloudinary.com/v1_1/dacsfvaap/image/upload', {
       method: 'POST',
@@ -80,7 +81,7 @@ const EditUser = () => {
         throw new Error('User update failed');
       }
 
-      const data = await response.json();
+      await response.json();
       navigate('/users');
     } catch (error) {
       console.error('Error updating user:', error);
@@ -90,58 +91,100 @@ const EditUser = () => {
   return (
     <div className="my-8 mx-8">
       <form onSubmit={handleSubmit} className="mb-8">
-        <div className="grid grid-cols-2 gap-4">
-          <input 
-            type="file"
-            name="photo" 
+        <div className="flex flex-col gap-4">
+        <input 
+            type="file" 
+            placeholder="Image URL" 
+            value={photo} 
             onChange={handleFileChange} 
             className="border p-2" 
+            required 
           />
           <input 
-            type="text"
-            name="name" 
-            placeholder="Name" 
-            value={formData.name} 
+            type="text" 
+            placeholder="fullName" 
+            value={fullName} 
             onChange={handleInputChange} 
             className="border p-2" 
             required 
           />
           <input 
-            type="text"
-            name="surname" 
-            placeholder="Surname" 
-            value={formData.surname} 
-            onChange={handleInputChange} 
-            className="border p-2" 
-            required 
-          />
-          <input 
-            type="email"
-            name="email" 
+            type="email" 
             placeholder="E-mail" 
-            value={formData.email} 
+            value={email} 
             onChange={handleInputChange} 
             className="border p-2" 
             required 
           />
           <input 
-            type="text"
-            name="username" 
+            type="text" 
             placeholder="Username" 
-            value={formData.username} 
+            value={userName} 
             onChange={handleInputChange} 
             className="border p-2" 
             required 
           />
           <input 
-            type="password"
-            name="password" 
+            type="password" 
             placeholder="Password" 
-            value={formData.password} 
+            value={password} 
             onChange={handleInputChange} 
             className="border p-2" 
             required 
           />
+
+          <div className='flex gap-[500px]'>
+          <div className='flex flex-col gap-2'>
+          <label>
+          <input 
+            type="radio" 
+            value="Admin" 
+            name="isAdmin"
+            onChange={handleInputChange} 
+            className="border p-2" 
+            required 
+          />
+          Admin
+          </label>
+          <label>
+          <input 
+            type="radio" 
+            value="User" 
+            name="isAdmin"
+            onChange={handleInputChange} 
+            className="border p-2" 
+            required 
+          />
+          User
+          </label>
+          </div>
+
+          <div className='flex flex-col gap-2'>
+          <label>
+          <input 
+            type="radio" 
+            value="Subscribed" 
+            name="isSubscribed"
+            onChange={handleInputChange} 
+            className="border p-2" 
+            required 
+          />
+          Subscribed
+          </label>
+          <label>
+          <input 
+            type="radio" 
+            value="Not Subscribed" 
+            name="isSubscribed"
+            onChange={handleInputChange} 
+            className="border p-2" 
+            required 
+          />
+          Not Subscribed
+          </label>
+          </div>
+          </div>
+
         </div>
         <button type='submit' className=" mt-4 relative flex h-[50px] w-40 items-center justify-center overflow-hidden bg-gray-800 text-white  transition-all before:absolute before:h-0 before:w-0 before:rounded-full before:bg-orange-600 before:duration-500 before:ease-out hover:shadow-orange-600 hover:before:h-56 hover:before:w-56">
       <span className="relative z-10">Update User</span>
