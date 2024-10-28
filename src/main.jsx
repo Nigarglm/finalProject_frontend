@@ -29,6 +29,10 @@ import HeroSec from './admin/components/HeroSec/HeroSec.jsx'
 import AddHero from './admin/components/HeroSec/AddHero.jsx'
 import EditHero from './admin/components/HeroSec/EditHero.jsx'
 
+//Logo
+import Logo from './admin/components/Logo/Logo.jsx'
+import AddLogo from './admin/components/Logo/AddLogo.jsx'
+import EditLogo from './admin/components/Logo/EditLogo.jsx'
 
 const router = createBrowserRouter([
   {
@@ -78,6 +82,15 @@ const router = createBrowserRouter([
     },
     {
       path: "/admin/hero/addHero", element: <AddHero/>
+    },
+    {
+      path: "/admin/logo", element: <Logo/>
+    },
+    {
+      path: "/admin/logo/:id", element: <EditLogo/>
+    },
+    {
+      path: "/admin/logo/addLogo", element: <AddLogo/>
     },
     ]
   },
