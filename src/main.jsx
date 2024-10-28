@@ -34,6 +34,11 @@ import Logo from './admin/components/Logo/Logo.jsx'
 import AddLogo from './admin/components/Logo/AddLogo.jsx'
 import EditLogo from './admin/components/Logo/EditLogo.jsx'
 
+//Comments
+import Comments from './admin/components/Comments/Comments.jsx'
+import AddComment from './admin/components/Comments/AddComment.jsx'
+import EditComment from './admin/components/Comments/EditComment.jsx'
+
 const router = createBrowserRouter([
   {
     path: "/", element: <App/>,
@@ -91,6 +96,15 @@ const router = createBrowserRouter([
     },
     {
       path: "/admin/logo/addLogo", element: <AddLogo/>
+    },
+    {
+      path: "/admin/comments", element: <Comments/>
+    },
+    {
+      path: "/admin/comments/:id", element: <EditComment/>
+    },
+    {
+      path: "/admin/comments/addComment", element: <AddComment/>
     },
     ]
   },
