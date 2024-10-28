@@ -34,7 +34,7 @@ const fetchMovies = async () =>{
 
       };
       
-      // Remove the deleted user from the state
+      // Remove the deleted movie from the state
       setMovies(movies.filter(movies => movies._id !== id));
     } catch (error) {
       console.error('Error deleting movies:', error);
