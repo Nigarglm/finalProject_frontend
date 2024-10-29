@@ -35,7 +35,7 @@ const fetchFaq = async () =>{
       };
       
       // Remove the deleted faq from the state
-      setFaq(movies.filter(faq => faq._id !== id));
+      setFaq(faq.filter(faq => faq._id !== id));
     } catch (error) {
       console.error('Error deleting faq:', error);
     }

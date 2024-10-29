@@ -39,6 +39,16 @@ import Comments from './admin/components/Comments/Comments.jsx'
 import AddComment from './admin/components/Comments/AddComment.jsx'
 import EditComment from './admin/components/Comments/EditComment.jsx'
 
+//Categories
+import Category from './admin/components/Categories/Category.jsx'
+import AddCategory from './admin/components/Categories/AddCategory.jsx'
+import EditCategory from './admin/components/Categories/EditCategory.jsx'
+
+//Subscribtions
+import Subscribtion from './admin/components/Subscribtions/Subscribtion.jsx'
+import AddSubscribtion from './admin/components/Subscribtions/AddSubscribtion.jsx'
+import EditSubscribtion from './admin/components/Subscribtions/EditSubscribtion.jsx'
+
 const router = createBrowserRouter([
   {
     path: "/", element: <App/>,
@@ -105,6 +115,24 @@ const router = createBrowserRouter([
     },
     {
       path: "/admin/comments/addComment", element: <AddComment/>
+    },
+    {
+      path: "/admin/category", element: <Category/>
+    },
+    {
+      path: "/admin/category/:id", element: <EditCategory/>
+    },
+    {
+      path: "/admin/category/addCategory", element: <AddCategory/>
+    },
+    {
+      path: "/admin/subscribtion", element: <Subscribtion/>
+    },
+    {
+      path: "/admin/subscribtion/:id", element: <EditSubscribtion/>
+    },
+    {
+      path: "/admin/subscribtion/addSubscribtion", element: <AddSubscribtion/>
     },
     ]
   },
